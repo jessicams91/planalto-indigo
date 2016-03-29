@@ -16,16 +16,11 @@ ActiveRecord::Schema.define(version: 20160329062516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cards", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name_en"
+    t.string   "name_pt"
     t.string   "stage"
-    t.string   "type"
+    t.string   "card_type"
     t.integer  "hit_points"
     t.string   "rarity"
     t.string   "number"

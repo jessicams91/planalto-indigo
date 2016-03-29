@@ -1,9 +1,10 @@
 class CreateCards < ActiveRecord::Migration
   def change
     create_table :cards do |t|
-      t.string :name
+      t.string :name_en
+      t.string :name_pt
       t.string :stage
-      t.string :type
+      t.string :card_type
       t.integer :hit_points
       t.string :rarity
       t.string :number

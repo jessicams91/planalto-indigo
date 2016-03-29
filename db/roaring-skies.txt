@@ -1,0 +1,8 @@
+1/108	Exeggcute	Grass	Common
+2/108	Exeggutor	Grass	Uncommon
+3/108	Wurmple	Grass	Common
+4/108	Silcoon	Grass	Uncommon
+5/108	Beautifly	Grass	Rare Holo
+6/108	Cascoon	Grass	Common
+7/108	Dustox	Grass	Uncommon
+8/108	Dustox	Grass	Rare

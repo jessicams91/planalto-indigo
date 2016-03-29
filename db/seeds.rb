@@ -1,7 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+File.foreach('db/roaring-skies.txt').with_index do |line|
+  att = line.split
+  Card.create(number: att[0], name_en: att[1], card_type: att[2], rarity: att[3], expansion: "Roaring Skies")
+end
