@@ -4,6 +4,10 @@ class CardsController < ApplicationController
   def show
   end
 
+  def index
+    @cards = Card.all
+  end
+
   private
 
   def set_card
