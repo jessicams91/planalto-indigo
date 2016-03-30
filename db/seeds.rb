@@ -1,9 +1,9 @@
-File.foreach('db/roaring-skies.txt').with_index do |line|
-  att = line.split
-  Card.create(number: att[0].split('/')[0], name_en: att[1], card_type: att[2], rarity: att[3], expansion: "Roaring Skies")
+require 'csv'
+CSV.foreach('db/roaring-skies.csv') do |row|
+  Card.create(number: row[0].split('/')[0], name_en: row[1], element: row[2], rarity: row[3], expansion: "Roaring Skies")
 end
 File.foreach('db/roaring-skies_pt.txt').with_index do |line|
-  att = line.split
-  card = Card.find_by(number: att[0], expansion: "Roaring Skies")
-  card.update(name_pt: att[1])
+  row = line.split(/(\d+)/)
+  card = Card.find_by(number: row[1], expansion: "Roaring Skies")
+  card.update(name_pt: row[2].strip)
 end

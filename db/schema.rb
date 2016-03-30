@@ -19,18 +19,14 @@ ActiveRecord::Schema.define(version: 20160329062516) do
   create_table "cards", force: :cascade do |t|
     t.string   "name_en"
     t.string   "name_pt"
-    t.string   "stage"
     t.string   "card_type"
-    t.integer  "hit_points"
+    t.string   "element"
     t.string   "rarity"
     t.string   "number"
     t.string   "expansion"
     t.string   "photo"
-    t.string   "weakness"
-    t.string   "resistance"
-    t.string   "retreat_cost"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
