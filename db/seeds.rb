@@ -8,7 +8,7 @@ File.foreach('db/roaring-skies_pt.txt').with_index do |line|
   card = Card.find_by(number: row[1], expansion: "Roaring Skies")
   card.update(name_pt: row[2].strip)
 end
-# Saving images from selebii
+# Saving images from serebii
 Card.all.each do |card|
   url = "http://www.serebii.net/card/"
   expansion = card.expansion.delete(' ').downcase
