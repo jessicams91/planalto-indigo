@@ -1,0 +1,9 @@
+<% if @card.name_pt || (@card.name_en.eql? @card.name_pt) %>
+<h1 class="ls-title-intro ls-ico-cart"><%= @card.name_en%> / <%= @card.name_pt%></h1>
+<% else %>
+<h1 class="ls-title-intro ls-ico-cart"><%= @card.name_en%></h1>
+<% end %>
+<span>
+  <strong>Tipo:</strong> <%= @card.card_type %>
+  <%= image_tag(@card.photo, alt: @card.name_en) %>
+</span>
