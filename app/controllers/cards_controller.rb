@@ -9,8 +9,12 @@ class CardsController < ApplicationController
   end
 
   def import
-    Card.import(params[:file])
-    redirect_to root_url, notice: "Cards imported."
+    begin
+      Card.import(params[:file])
+      redirect_to root_url, notice: "Cards imported."
+    rescue
+      redirect_to root_url, notice: "Invalid CSV file format."
+    end
   end
 
   private
