@@ -14,8 +14,12 @@
  <tbody>
    <tr>
      <td>Nome: <%= card.name_en %> / <%= card.name_pt %></td><br>
-     <td><% card_price = @prices.find_by(card: card) %></td>
-     <td>Preço: R$<%= card_price.price if card_price %></td><br>
+     <td><% @card_price = @prices.where(card: card) %></td>
+     <% if @card_price %>
+       <% @card_price.each do |price| %>
+        <td>Preço: R$<%= price.price %></td><br>
+       <% end %>
+    <% end %>
    </tr>
    <br>
 </tbody>
