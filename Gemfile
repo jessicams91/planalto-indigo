@@ -22,7 +22,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rubocop', '~> 0.36.0', require: false
   gem 'factory_girl_rails'
-  gem 'mechanize', '~> 2.7', '>= 2.7.3'
+  gem 'mechanize'
 end
 
 group :development do

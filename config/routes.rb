@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :cards, only: [:show, :index] do
     collection { post :import }
   end
+  resources :expansions, only: [:show, :index] do
+    collection { post :import }
+  end
 end

@@ -1,0 +1,98 @@
+id,name_en,card_total,name_pt,prefix,series
+1,Base Set,102,,,
+2,Jungle,64,,,
+3,Fossil,62,,,
+4,Base Set 2,130,,,
+5,Team Rocket,83,,,
+6,Gym Heroes,132,,,
+7,Gym Challenge,132,,,
+8,Neo Genesis,111,,,
+9,Neo Discovery,75,,,
+10,Neo Revelation,66,,,
+11,Neo Destiny,113,,,
+12,Legendary,110,,,
+13,Expedition,165,,,
+14,Aquapolis,182,,,
+15,Skyridge,182,,,
+16,EX Ruby and Sapphire,109,,ex1,Ex-series
+17,EX Sandstorm,100,,ex2,Ex-series
+18,EX Dragon,100,,ex3,Ex-series
+19,EX Team Magma VS Team Aqua,97,,ex4,Ex-series
+20,EX Hidden Legends,102,,ex5,Ex-series
+21,EX FireRed and Leaf Green,116,,ex6,Ex-series
+22,EX Team Rocket Returns,111,,ex7,Ex-series
+23,EX Deoxys,109,,ex8,Ex-series
+24,EX Emerald,107,,ex9,Ex-series
+25,EX Unseen Forces,145,,ex10,Ex-series
+26,EX Delta Species,114,,ex11,Ex-series
+27,EX Legend Maker,93,,ex12,Ex-series
+28,EX Holon Phantoms,111,,ex13,Ex-series
+29,EX Crystal Guardians,100,,ex14,Ex-series
+30,EX Dragon Frontiers,101,,ex15,Ex-series
+31,EX Power Keepers,108,,ex16,Ex-series
+32,Diamond and Pearl,130,,dp1,diamond-pearl-series
+33,Mysterious Treasures,124,,dp2,diamond-pearl-series
+34,Secret Wonders,132,,dp3,diamond-pearl-series
+35,Great Encounters,106,,dp4,diamond-pearl-series
+36,Majestic Dawn,100,,dp5,diamond-pearl-series
+37,Legends Awakened,146,,dp6,diamond-pearl-series
+38,Stormfront,106,,dp7,diamond-pearl-series
+39,Platinum,136,,pl1,platinum-series
+40,Rising Rivals,120,,pl2,platinum-series
+41,Supreme Victors,159,,pl3,platinum-series
+42,Arceus,123,,pl4,platinum-series
+43,HeartGold SoulSilver,124,,hgss1,hgss-series
+44,Unleashed,96,,hgss2,hgss-series
+45,Undaunted,91,,hgss3,hgss-series
+46,Triumphant,103,,hgss4,hgss-series
+47,Call of Legends,106,,col1,hgss-series
+48,Black White,115,,bw1,Bw-series
+49,Emerging Powers,98,,bw2,Bw-series
+50,Noble Victories,102,,bw3,Bw-series
+51,Next Destinies,104,,bw4,Bw-series
+52,Dark Explorers,111,,bw5,Bw-series
+53,Dragons Exalted,128,,bw6,Bw-series
+54,Dragon Vault,21,,dv1,Bw-series
+55,Boundaries Crossed,153,,bw7,Bw-series
+56,Plasma Storm,138,,bw8,Bw-series
+57,Plasma Freeze,122,,bw9,Bw-series
+58,Plasma Blast,105,,bw10,Bw-series
+59,Legendary Treasures,138,,bw11,Bw-series
+60,X Y,146,,xy1,Xy-series
+61,Flashfire,109,,xy2,Xy-series
+62,Furious Fists,113,,xy3,Xy-series
+63,Phantom Forces,122,,xy4,Xy-series
+64,Primal Clash,164,,xy5,Xy-series
+65,Double Crisis,34,,dc1,Xy-series
+66,Roaring Skies,110,,xy6,Xy-series
+67,Ancient Origins,100,,xy7,Xy-series
+68,BREAKThrough,164,,xy8,Xy-series
+69,BREAKPoint,123,,xy9,Xy-series
+70,Generations,115,,gen1,Xy-series
+71,Fates Collide,,,xy11,Xy-series
+72,Wizards Promos,54,,,
+73,Nintendo Promo,40,,,
+74,DP Promo,56,,,
+75,Southern Islands,18,,,
+76,Best of Game,9,,,
+77,POP Series 1,17,,,
+78,POP Series 2,17,,,
+79,POP Series 3,17,,,
+80,POP Series 4,17,,,
+81,POP Series 5,17,,,
+82,POP Series 6,17,,,
+83,POP Series 7,17,,,
+84,POP Series 8,17,,,
+85,EX Trainer Kit Latios,10,,,
+86,EX Trainer Kit Latias,10,,,
+87,EX Trainer Kit Plusle,12,,,
+88,EX Trainer Kit Minun,12,,,
+89,POP Series 9,17,,,
+90,Pokemon Rumble,16,,,
+91,HGSS Promo,25,,,
+92,BW Promos,99,,bwp,bw-series
+93,McDonalds Promos 2011,12,,,
+94,Pikachu World,9,,,
+95,McDonalds Promos 2012,12,,,
+96,XY Promos,3,,xyp,Xy-series
+97,Kalos Starter Set,39,,,
