@@ -11,8 +11,7 @@ task fetch_prices_spellbox: :environment do
     if !(link = doc.at_css(".name a")).nil?
       card_link = link[:href]
       price = doc.at_css(".price-new").text.delete("R$").gsub(',','.')
-
-      item = Nokogiri::HTML(open(card_link))
+      item = agent.get(card_link)
       qtd = item.css("tr~ tr+ tr .description-right").text
       shop_name = "Spellbox"
       card_price = CardPrice.find_by(card: card, shop_name: shop_name) ||

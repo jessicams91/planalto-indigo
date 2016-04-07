@@ -4,7 +4,7 @@
 #   require 'mechanize'
 #   url = "http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_Trading_Card_Game_expansions"
 #   agent = Mechanize.new
-#   agent.get(url)
+#   agent.get(url)a
 #   doc = agent.page
 #   doc.css("tr").each do |item|
 #       link = item.at_css("td:nth-child(4) a")
