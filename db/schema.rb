@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405215842) do
+ActiveRecord::Schema.define(version: 20160407025850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "card_prices", force: :cascade do |t|
+    t.string   "shop_name"
+    t.string   "card_link"
+    t.integer  "quantity"
+    t.decimal  "price"
+    t.integer  "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "card_prices", ["card_id"], name: "index_card_prices_on_card_id", using: :btree
 
   create_table "cards", force: :cascade do |t|
     t.string   "name_en"
@@ -40,5 +52,6 @@ ActiveRecord::Schema.define(version: 20160405215842) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "card_prices", "cards"
   add_foreign_key "cards", "expansions"
 end

@@ -9,10 +9,14 @@
     </label>
   </div>
 </section>
+<hr>
 <% @cards.each do |card| %>
  <tbody>
    <tr>
-     <td><%= card.name_en %> / <%= card.name_pt %></td><br>
+     <td>Nome: <%= card.name_en %> / <%= card.name_pt %></td><br>
+     <td><% card_price = @prices.find_by(card: card) %></td>
+     <td>Preço: R$<%= card_price.price if card_price %></td><br>
    </tr>
+   <br>
 </tbody>
 <% end %>
