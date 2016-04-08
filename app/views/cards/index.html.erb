@@ -14,6 +14,8 @@
  <tbody>
    <tr>
      <td>Nome: <%= card.name_en %> / <%= card.name_pt %></td><br>
+     <td>Expansão: <%= card.expansion.name_en %> - <%=card.expansion.prefix %> <%=card.number%>/<%=card.expansion.card_total%> </td><br>
+     <td>ID: <%= card.id %></td><br>
      <td><% @card_price = @prices.where(card: card) %></td>
      <% if @card_price %>
        <% @card_price.each do |price| %>
