@@ -4,7 +4,7 @@ class CreateCards < ActiveRecord::Migration
       t.string :name_en
       t.string :name_pt
       t.string :card_type
-      t.string :element
+      t.string :type_element
       t.string :rarity
       t.string :number
       t.string :expansion

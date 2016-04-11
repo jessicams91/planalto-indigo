@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407212508) do
+ActiveRecord::Schema.define(version: 20160407025850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160407212508) do
     t.string   "name_en"
     t.string   "name_pt"
     t.string   "card_type"
-    t.string   "element"
+    t.string   "type_element"
     t.string   "rarity"
     t.string   "number"
     t.string   "photo"
@@ -48,11 +48,11 @@ ActiveRecord::Schema.define(version: 20160407212508) do
     t.string   "name_pt"
     t.integer  "card_total"
     t.string   "prefix"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "series"
     t.string   "icon"
     t.string   "expansion_link"
-    t.string   "series"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_foreign_key "card_prices", "cards"

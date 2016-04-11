@@ -5,6 +5,9 @@ class CreateExpansions < ActiveRecord::Migration
       t.string :name_pt
       t.integer :card_total
       t.string :prefix
+      t.string :series
+      t.string :icon
+      t.string :expansion_link
 
       t.timestamps null: false
     end

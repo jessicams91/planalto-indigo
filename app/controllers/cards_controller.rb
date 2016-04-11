@@ -5,7 +5,7 @@ class CardsController < ApplicationController
   end
 
   def index
-    @cards = Card.all.order(:id)
+    @cards = Card.all.order(:expansion_id)
     @prices = CardPrice.all
   end
 
