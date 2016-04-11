@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+  ruby '2.2.4'
   gem 'rails', '4.2.6'
   gem 'pg', '~> 0.15'
   gem 'sass-rails', '~> 5.0'
@@ -12,6 +13,7 @@ source 'https://rubygems.org'
   gem 'devise', '~> 3.5', '>= 3.5.5'
   gem 'responders', '~> 2.1', '>= 2.1.1'
   gem 'simple_form'
+  gem 'rails_12factor'
 
 group :development, :test do
   gem 'pry-rails'
