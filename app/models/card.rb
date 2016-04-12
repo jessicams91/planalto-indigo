@@ -14,7 +14,7 @@ class Card < ActiveRecord::Base
   end
 
   def self.format_fields(card)
-    name_en = card.name_en.gsub(/(?<=[a-z])(?=[A-Z])/, ' ').gsub('Mega','M')
+    name_en = card.name_en.gsub(/(?<=[a-z])(?=[A-Z])/, ' ').gsub('Mega ','M ')
     number = card.number.split('/')[0].strip
     rarity = card.rarity.gsub(/(?<=[a-z])(?=[A-Z])/, ' ')
     arr = @@type_map.assoc(card.type_element)

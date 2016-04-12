@@ -4,32 +4,89 @@ task spellbox: :environment do
   require 'mechanize'
   agent = Mechanize.new
   shop_name = "Spellbox"
-  Card.all.each do |card|
-  # Card.where('expansion_id = 69').each do |card|
+  puts 'Iniciando Update de Preços'
+  expansions = [1,22,34,35,42,43,44]
+  deleted = updated = new = 0
+  cards = Card.where("expansion_id IN (?) OR expansion_id >= 46",expansions)
+  # cards = Card.where(:expansion_id => 62)
+  cards.each do |card|
     expansion = card.expansion
     card_price = CardPrice.find_by(card: card, shop_name: shop_name) ||   CardPrice.new
     if card_price.card_link.nil?
-      url = "http://www.spellbox.com.br/index.php?route=product/search&search=#{card.name_en.delete("'").tr('^A-Za-z0-9', ' ')} #{card.number} #{expansion.name_en}"
+      card_name = card.name_en.delete("'").tr("^A-Za-z0-9-.é", ' ').strip
+      expansion_name = expansion.name_en
+      card_number = case expansion.id
+      when 1
+        expansion_name = "Base Set 1st edition"
+        card.number
+      when 22
+        card_name = card_name.gsub("Rockets ","") if card_name.starts_with?("Rockets")
+        ""
+      when 42, 44, 47, 54, 68
+        case card.number
+        when "TWO"
+          "96/95"
+        when "SH10"
+          "100/#{expansion.card_total}"
+        when "SH11"
+          "101/#{expansion.card_total}"
+        when "SH12"
+          "102/#{expansion.card_total}"
+        else
+          if !/\A\d+\z/.match(card.number)
+            card.number
+          else
+            "%02d"%card.number+"/#{expansion.card_total}"
+          end
+        end
+      when 67
+        "%03d"%card.number
+      when 56
+        "#{card.number}/138"
+      when 58
+        "#{card.number}/#{expansion.card_total}"
+      when 61
+        expansion_name = "Flash de Fogo"
+        "%03d"%card.number+"/"+"%03d"%expansion.card_total
+      else
+        if !/\A\d+\z/.match(card.number)
+          "#{card.number}/"
+        else
+          "%03d"%card.number+"/"+"%03d"%expansion.card_total
+        end
+      end
+      card_number = "" if card_name.include?("Alph Lithograph")
+      url = "http://www.spellbox.com.br/index.php?route=product/search&search=#{card_name} #{card_number} #{expansion_name}&description=true"
       agent.get(url)
       doc = agent.page
       link = doc.at_css(".name a")
-      card_link = link[:href] unless link.nil?
-    else
-      card_link = card_price.card_link
-    end
-    unless link.nil?
-    item = agent.get(card_link)
-    qtd = item.at_css("tr~ tr+ tr .description-right")
-      qtd = qtd.text
-      price = item.at_css(".description+ .price").text.split('R$').last
-      if card_price.id?
-       card_price.update(price: price, card: card, quantity: qtd)
-       puts "#{card.id} preço atualizado"
+      if card_price.card_link?
+        card_link = card_price.card_link
       else
-       card_price.update(shop_name: shop_name, card_link: card_link, card: card, price: price, quantity: qtd)
-       puts "#{card.id} Novo preço"
+        card_link = link[:href] unless link.nil?
       end
-      card_price.update(price: price, card: card)
+      unless card_link.nil?
+        item = agent.get(card_link)
+        name = item.at_css(".fn").text.delete("'").tr('^A-Za-z0-9-.', ' ')
+        qtd = item.at_css("tr~ tr+ tr .description-right").text
+        price = item.at_css(".description+ .price").text.split('R$').last.gsub(',','.')
+        if name.include?("Foil")
+          puts "#{card.id} #{name} Errado!"
+          if card_price.id?
+            card_price.destroy
+            deleted+=1
+          end
+        elsif card_price.id?
+          updated+=1 if price != card_price.price
+          card_price.update(price: price, quantity: qtd)
+    #  puts "#{card.id} #{name} Atualizado"
+        else
+          card_price.update(shop_name: shop_name, card_link: card_link, card: card, price: price, quantity: qtd)
+          puts "#{card.id} #{name} Novo preço"
+          new+=1
+        end
+      end
     end
   end
+  puts "Deletados: #{deleted} Atualizados: #{updated}   Novos: #{new}"
 end
