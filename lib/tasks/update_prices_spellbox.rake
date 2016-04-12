@@ -8,7 +8,6 @@ task spellbox: :environment do
   expansions = [1,22,34,35,42,43,44]
   deleted = updated = new = 0
   cards = Card.where("expansion_id IN (?) OR expansion_id >= 46",expansions)
-  # cards = Card.where(:expansion_id => 62)
   cards.each do |card|
     expansion = card.expansion
     card_price = CardPrice.find_by(card: card, shop_name: shop_name) ||   CardPrice.new
@@ -60,31 +59,35 @@ task spellbox: :environment do
       agent.get(url)
       doc = agent.page
       link = doc.at_css(".name a")
-      if card_price.card_link?
-        card_link = card_price.card_link
-      else
-        card_link = link[:href] unless link.nil?
+      link2 = doc.css(".name a")[1]
+    end
+    if card_price.card_link?
+      card_link = card_price.card_link
+    else
+      unless link.nil?
+        card_link = link[:href]
+        card_link = link2[:href] unless link2.nil? if card_link.include?("reverse-foil" || "-ancient-origins-")
       end
-      unless card_link.nil?
-        item = agent.get(card_link)
-        name = item.at_css(".fn").text.delete("'").tr('^A-Za-z0-9-.', ' ')
-        qtd = item.at_css("tr~ tr+ tr .description-right").text
-        price = item.at_css(".description+ .price").text.split('R$').last.gsub(',','.')
-        if name.include?("Foil")
-          puts "#{card.id} #{name} Errado!"
-          if card_price.id?
-            card_price.destroy
-            deleted+=1
-          end
-        elsif card_price.id?
-          updated+=1 if price != card_price.price
-          card_price.update(price: price, quantity: qtd)
-    #  puts "#{card.id} #{name} Atualizado"
-        else
-          card_price.update(shop_name: shop_name, card_link: card_link, card: card, price: price, quantity: qtd)
-          puts "#{card.id} #{name} Novo preço"
-          new+=1
+    end
+    unless card_link.nil?
+      item = agent.get(card_link)
+      name = item.at_css(".fn").text.delete("'").tr('^A-Za-z0-9-.', ' ')
+      qtd = item.at_css("tr+ tr .description-right").text
+      price = item.at_css(".description+ .price").text.split('R$').last.gsub(',','.')
+      if name.include?("Reverse Foil")
+        puts "#{card.id} #{name} Errado!"
+        if card_price.id?
+          card_price.destroy
+          deleted+=1
         end
+      elsif card_price.id?
+        card_price.update(price: price, quantity: qtd)
+        puts "#{card.id} #{name} Atualizado"
+        updated+=1
+      else
+        card_price.update(shop_name: shop_name, card_link: card_link, card: card, price: price, quantity: qtd)
+        puts "#{card.id} #{name} Novo preço"
+        new+=1
       end
     end
   end
