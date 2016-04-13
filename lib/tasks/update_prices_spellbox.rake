@@ -74,14 +74,14 @@ task spellbox: :environment do
         card_link = link2[:href] unless link2.nil? if card_link.include?("reverse-foil") || card_link.include?("-ancient-origins-")
       end
     end
-    puts "#{card.id} #{card_name} #{card_number} #{expansion_name} Não Encontrado!" if card_link.nil?
+    # puts "#{card.id} #{card_name} #{card_number} #{expansion_name} Não Encontrado!" if card_link.nil?
     unless card_link.nil?
       item = agent.get(card_link)
       name = item.at_css(".fn").text.delete("'").tr('^A-Za-z0-9-.', ' ')
       qtd = item.at_css("tr+ tr .description-right").text
       price = item.at_css(".description+ .price").text.split('R$').last.gsub(',','.')
       if name.include?("Reverse Foil")
-        puts "#{card.id} #{name} Errado!"
+        # puts "#{card.id} #{name} Errado!"
         if card_price.id?
           puts "#{card.id} #{name} Deletado"
           card_price.destroy
