@@ -11,18 +11,3 @@
 
 </section>
 <hr>
-<% @cards.each do |card| %>
- <tbody>
-   <tr>
-     <td>Nome: <%= card.name_en %> / <%= card.name_pt %> ID: <%= card.id %></td><br>
-     <td>Expansão: <%= card.expansion.name_en %> - <%=card.expansion.prefix %> <%=card.number%>/<%=card.expansion.card_total%> </td><br>
-     <% @card_price = @prices.where(card: card) %>
-     <% if @card_price %>
-       <% @card_price.each do |price| %>
-        <td>Preço: R$<%= price.price %> - <%=price.shop_name%></td><br>
-       <% end %>
-    <% end %>
-   </tr>
-   <br>
-</tbody>
-<% end %>

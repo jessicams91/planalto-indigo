@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407025850) do
+ActiveRecord::Schema.define(version: 20160415050600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160407025850) do
     t.integer  "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "foil"
   end
 
   add_index "card_prices", ["card_id"], name: "index_card_prices_on_card_id", using: :btree
@@ -48,7 +49,6 @@ ActiveRecord::Schema.define(version: 20160407025850) do
     t.string   "name_pt"
     t.integer  "card_total"
     t.string   "prefix"
-    t.string   "series"
     t.string   "icon"
     t.string   "expansion_link"
     t.datetime "created_at",     null: false
