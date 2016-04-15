@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show]
 
   def show
-    @prices = CardPrice.where(card: @card).order(:price)
+    @card_prices = CardPrice.where(card: @card).order(:price)
     @expansion = @card.expansion
   end
 

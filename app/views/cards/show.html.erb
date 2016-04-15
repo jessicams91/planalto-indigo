@@ -13,4 +13,7 @@
   <% end %>
   <p><strong>Raridade:</strong> <%= @card.rarity %></p>
   <p><strong>Expansão:</strong> <%= @expansion.name_en %></p>
+  <% @card_prices.each do |card_price| %>
+    <p>Loja: <%= card_price.shop_name %> Preço: R$<%= card_price.price %><p>
+  <% end %>
 </span>
