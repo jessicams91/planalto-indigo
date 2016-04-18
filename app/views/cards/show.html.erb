@@ -4,7 +4,7 @@
   <h1 class="ls-title-intro ls-ico-cart"><%= @card.name_en%></h1>
 <% end %>
 <span>
-  <%= image_tag(@card.photo, alt: @card.name_en) %>
+  <%= image_tag(@card.photo, alt: @card.name_en, size: '235x330') %>
   <p><strong>Tipo:</strong> <%= @card.card_type %></p>
   <% if @card.card_type == "Pokemon" %>
     <p><strong>Elemento:</strong> <%= @card.type_element %></p>
