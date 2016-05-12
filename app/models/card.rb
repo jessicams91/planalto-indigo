@@ -19,12 +19,19 @@ class Card < ActiveRecord::Base
     name_en = name_en.gsub('Mega ','M ') if card.name_en.include?("EX")
     number = card.number.strip
     rarity = card.rarity.gsub(/(?<=[a-z])(?=[A-Z])/, ' ')
-    arr = @@type_map.assoc(card.type_element)
-    if arr.nil?
-      card.update(number:number, name_en:name_en, rarity: rarity)
-    else
-      card.update(number:number, name_en:name_en, rarity: rarity,
-                  type_element: arr[1], card_type: arr[2])
+    if card.card_type.nil?
+      arr = @@type_map.assoc(card.type_element)
+      if card.type_element.ends_with? "E"
+        type_element = card.type_element.gsub(" E","")
+        card.update(number:number, name_en:name_en, rarity: rarity,
+                    type_element: type_element, card_type: "Energy")
+      elsif arr.nil?
+        card.update(number:number, name_en:name_en, rarity: rarity,
+                    card_type: "Pokémon")
+      else
+        card.update(number:number, name_en:name_en, rarity: rarity,
+                    type_element: arr[1], card_type: arr[2])
+      end
     end
   end
 
