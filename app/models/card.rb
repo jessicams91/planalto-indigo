@@ -21,7 +21,7 @@ class Card < ActiveRecord::Base
     rarity = card.rarity.gsub(/(?<=[a-z])(?=[A-Z])/, ' ')
     arr = @@type_map.assoc(card.type_element)
     if arr.nil?
-      card.update(number:number, name_en:name_en, rarity: rarity, card_type: "Na")
+      card.update(number:number, name_en:name_en, rarity: rarity)
     else
       card.update(number:number, name_en:name_en, rarity: rarity,
                   type_element: arr[1], card_type: arr[2])
@@ -32,6 +32,12 @@ class Card < ActiveRecord::Base
     ["I","Item","Trainer"],
     ["Su","Supporter","Trainer"],
     ["St","Stadium","Trainer"],
-    ["T","Trainer","Trainer"]
+    ["T","Trainer","Trainer"],
+    ["T [GC]","Goldenrod Game Corner","Trainer"],
+    ["T [R]","Trainer","Trainer"],
+    ["T [St]","Stadium","Trainer"],
+    ["T [Su]","Supporter","Trainer"],
+    ["T [TM]","TM","Trainer"],
+    ["T [Tool]","Tool","Trainer"]
   ]
 end
