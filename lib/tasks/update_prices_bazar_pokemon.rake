@@ -1,14 +1,15 @@
-desc "Fetch product prices"
+require 'nokogiri'
+require 'mechanize'
+desc "Fetch product prices for Bazar de Bagdá"
 task bazar_bagda: :environment do
-  require 'nokogiri'
-  require 'mechanize'
   shop_name = "Bazar de Bagdá"
   deleted = updated = new = not_found = 0
   cards = Card.where("expansion_id >= 60")
+  puts "Starting update for #{cards.count} cards"
   cards.each do |card|
+    # Starting Attributtes
     card_total = card.expansion.cards.count
-    card_name = card.name_en.tr("^A-Za-z0-9-é'. ", ' ')
-    .gsub(" EX","-EX")
+    card_name = card.name_en.tr("^A-Za-z0-9-é'. ", ' ').gsub(" EX","-EX")
     base_url = "http://www.bazardebagda.com.br/?view=ecom%2Fitens&id=56925&busca="
     case card.expansion.id
     when 68,70
@@ -17,17 +18,19 @@ task bazar_bagda: :environment do
       card_number = card.number.split('/')[0]
       url = base_url+"#{card_name} (%23#{card_number}/#{card_total})"
     end
+    # Accessing page
     agent = Mechanize.new
     agent.get(url)
     doc = agent.page
+    # Update CardPrice
     card_price = CardPrice.find_by(card: card, shop_name: shop_name) || CardPrice.new
-    # binding.pry
     begin
+      # Get page attributes
       qtd = doc.at_css(".hmin30:nth-child(4)").text.strip.split[0]
       price = doc.at_css(".itemPreco").text.split[1].gsub(',','.') unless qtd.eql? "0"
       link = doc.uri.to_s
       if card_price.id?
-        card_price.update(price: price, quantity: qtd, shop_name: shop_name) # remover shop name
+        card_price.update(price: price, quantity: qtd, shop_name: shop_name)
         updated+=1
         puts "#{card.id} #{card.name_en} Atualizado"
       else

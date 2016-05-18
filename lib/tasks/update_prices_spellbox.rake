@@ -28,9 +28,9 @@ task spellbox: :environment do
       when 42, 44, 47, 54
         case card.number
         when "TWO" then "96/95"
-        when "SH10" then "100/#{expansion.card_total}"
-        when "SH11" then "101/#{expansion.card_total}"
-        when "SH12" then "102/#{expansion.card_total}"
+        when "SH10" then "100/99"
+        when "SH11" then "101/99"
+        when "SH12" then "102/99"
         end
       when 67
         card_name = "Porygon 2" if card.name_en == "Porygon2"

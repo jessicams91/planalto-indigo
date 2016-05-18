@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :expansion do
-    name_en "MyString"
-    name_pt "MyString"
-    card_total 1
-    prefix "MyString"
+    name_en "expansion"
+    name_pt "expansão"
+    card_total 100
+    prefix "ex"
+    icon ""
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415050600) do
+ActiveRecord::Schema.define(version: 20160518203705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,9 +50,8 @@ ActiveRecord::Schema.define(version: 20160415050600) do
     t.integer  "card_total"
     t.string   "prefix"
     t.string   "icon"
-    t.string   "expansion_link"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "card_prices", "cards"

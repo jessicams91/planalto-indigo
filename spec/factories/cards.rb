@@ -1,15 +1,12 @@
 FactoryGirl.define do
   factory :card do
-    name "MyString"
-    stage "MyString"
-    type ""
-    hit_points 1
-    rarity "MyString"
-    number "MyString"
-    expansion "MyString"
-    photo "MyString"
-    weakness "MyString"
-    resistance "MyString"
-    retreat_cost "MyString"
+    name_en "Test"
+    name_pt "Teste"
+    card_type "Trainer"
+    type_element "Item"
+    rarity "Common"
+    number "1/100"
+    photo ""
+    expansion
   end
 end

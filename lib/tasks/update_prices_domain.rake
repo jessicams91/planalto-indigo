@@ -8,6 +8,7 @@
 #     card = Card.first
 #     expansion = card.expansion
 #     url = "http://www.domaingames.com.br/Busca_Avancada.asp?q=#{(card.name_en.delete("'"))}"
+#     http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&Busca=Exeggcute&Funcao=BuscaAvancada
 #     # browser.goto url
 #     doc = Nokogiri::HTML.parse(browser.html)
 #     # puts doc.css("div#card_name")
