@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :card_price do
-    shop_name "MyString"
-    shop_link "MyString"
+    shop_name "Shop"
+    card_link ""
+    quantity 1
     price "9.99"
-    card nil
+    foil false
+    card
   end
 end

@@ -7,7 +7,7 @@ task bazar_bagda: :environment do
   cards = Card.where("expansion_id >= 60")
   puts "Starting update for #{cards.count} cards"
   cards.each do |card|
-    # Starting Attributtes
+    # Starting Attributes
     card_total = card.expansion.cards.count
     card_name = card.name_en.tr("^A-Za-z0-9-é'. ", ' ').gsub(" EX","-EX")
     base_url = "http://www.bazardebagda.com.br/?view=ecom%2Fitens&id=56925&busca="
