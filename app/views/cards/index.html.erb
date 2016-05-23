@@ -1,13 +1,13 @@
 <h1 class="ls-title-intro ls-ico-cart">Cartas</h1>
 <section class="ls-form-horizontal" id="order_form">
-  <div class="form-inputs">
+  <!-- <div class="form-inputs">
     <label class="ls-label">
       <%= form_tag import_cards_path, multipart: true do %>
       <%= file_field_tag :file %>
       <%= submit_tag "Importar Cartas" %>
       <% end %>
     </label>
-  </div>
-
+  </div> -->
+<%= button_to 'Import Cards', import_cards_path, method: :post %>
 </section>
 <hr>

@@ -1,11 +1,12 @@
 <h1 class="ls-title-intro ls-ico-cart">Expansões</h1>
 <section class="ls-form-horizontal" id="order_form">
-  <div class="form-inputs">
+  <!-- <div class="form-inputs">
     <label class="ls-label col-md-3">
       <%= form_tag import_expansions_path, multipart: true do %>
       <%= file_field_tag :file %>
       <%= submit_tag "Importar Expansões" %>
       <% end %>
     </label>
-  </div>
+  </div> -->
+  <%= button_to 'Import Expansions', import_expansions_path, method: :post %>
 </section>

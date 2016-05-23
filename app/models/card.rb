@@ -1,8 +1,10 @@
 class Card < ActiveRecord::Base
   belongs_to :expansion
   has_one :price
-  def self.import(file)
-    CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
+  def self.import
+  # def self.import(file)
+    # CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
+    CSV.foreach('cards.csv', headers: true, skip_blanks: true) do |row|
       card_hash = row.to_hash
       expansion = Expansion.find_by_name_en(row["expansion"])
       card = find_by_id(row["id"]) || new
