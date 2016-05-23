@@ -13,13 +13,13 @@ source 'https://rubygems.org'
   gem 'devise', '~> 3.5', '>= 3.5.5'
   gem 'responders', '~> 2.1', '>= 2.1.1'
   gem 'simple_form'
+  gem 'mechanize'
 
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'simplecov', require: false
-  gem 'mechanize'
   gem 'capybara'
   gem 'byebug'
   gem 'rubocop', '~> 0.36.0', require: false
