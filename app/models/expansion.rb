@@ -3,7 +3,7 @@ class Expansion < ActiveRecord::Base
   # def self.import(file)
   #   CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
   def self.import
-    CSV.foreach('expansions.csv', headers: true, skip_blanks: true) do |row|
+    CSV.foreach('app/assets/expansions.csv', headers: true, skip_blanks: true) do |row|
       expansion_hash = row.to_hash
       expansion = find_by_id(row["id"]) || new
       expansion.attributes = expansion_hash
