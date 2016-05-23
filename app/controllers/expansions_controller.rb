@@ -7,7 +7,8 @@ class ExpansionsController < ApplicationController
   def import
     begin
       # Expansion.import(params[:file])
-      Expansion.import
+      file = File.join(Rails.root, 'app/assets/expansions.csv')
+      Expansion.import(file)
       redirect_to root_url, notice: "Expansions imported."
     rescue
       redirect_to root_url, notice: "Invalid CSV file format."
